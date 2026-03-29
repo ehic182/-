@@ -622,3 +622,40 @@ public class Person {
 5.在保证numlock关上的情况下，按下alt+insert,选择constructor即可快捷构造方法
 
 6.括号里按ctrl+p查看形参
+
+
+
+## 子类真正能继承父类的是什么
+
+1.构造方法：不能被子类继承但可以被子类调用
+
+2.成员变量：可以被继承，private私有也可以，但无法直接调用，需结合getter和setter方法来间接调用(初始化时用setter，使用时用getter)
+
+~~~ java
+public class Son extends Father {
+    String interist;
+    
+    public void test() {
+        this.work = "程序员"; // ❌ 编译错误！无法访问 private 成员
+        System.out.println(work); // ❌ 编译错误！
+    }
+    
+    public void test2() {
+        setWork("程序员"); // ✅ 正确！通过继承的 public 方法访问
+        System.out.println(getWork()); // ✅ 正确！
+    }
+}
+
+~~~
+
+
+
+3.成员方法： 虚方法可以被继承(虚方法指无public，无static，无private修饰的方法)
+
+​			final修饰的最终方案不能被继承，可以被调用，编译期确定位置，运行时直接调用
+
+​			static修饰的静态方法不可被继承，可以被调用，编译期修改为类名调用，直接调用
+
+​			private修饰私有方法不可被继承，不可调用
+
+​			方法重写：子类替换虚方法表里方法的地址值			
