@@ -487,9 +487,7 @@ public class Student extends Person {
 
 ​	    如果构造方法中写了this()就不能写super()
 
-
-
-## 练习
+### 1.4练习
 
 ~~~ java
 Test类
@@ -623,9 +621,7 @@ public class Person {
 
 6.括号里按ctrl+p查看形参
 
-
-
-## 子类真正能继承父类的是什么
+### 1.5子类真正能继承父类的是什么
 
 1.构造方法：不能被子类继承但可以被子类调用
 
@@ -659,3 +655,12 @@ public class Son extends Father {
 ​			private修饰私有方法不可被继承，不可调用
 
 ​			方法重写：子类替换虚方法表里方法的地址值			
+
+## (十一)权限修饰符
+
+
+
+![Screenshot_20260329_141414](D:\qq\存储/Screenshot_20260329_141414.jpg)
+
+## (十二)多态
+
