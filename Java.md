@@ -623,7 +623,7 @@ public class Person {
 
 ### 1.5子类真正能继承父类的是什么
 
-1.构造方法：不能被子类继承但可以被子类调用
+1.构造方法：不能被子类继承但可以被子类调用,且**每个子类必须调用对应父类的构造方法**
 
 2.成员变量：可以被继承，private私有也可以，但无法直接调用，需结合getter和setter方法来间接调用(初始化时用setter，使用时用getter)
 
@@ -654,13 +654,64 @@ public class Son extends Father {
 
 ​			private修饰私有方法不可被继承，不可调用
 
-​			方法重写：子类替换虚方法表里方法的地址值			
+​			方法重写：子类替换虚方法表里方法的地址值，且重写时方法名必须相同，形参也要相同			
 
 ## (十一)权限修饰符
 
 
 
-![Screenshot_20260329_141414](D:\qq\存储/Screenshot_20260329_141414.jpg)
+![吧](D:\qq\存储/Screenshot_20260329_141414.jpg)
 
 ## (十二)多态
+
+定义：父类相同的事物调用同一个方法时呈现出不同的结果
+
+~~~ java
+Animal a = new Cat();//编译看左边，运行看右边
+a.show();//上面的意思是编译这个方法时看Animal类里有没有show方法，有的话编译成功否则失败，而真正运行的内容则是右边Cat类里的show方法里的东西
+~~~
+
+多态在实际开发中最常用的例子是
+
+~~~ java
+class Animal {
+    void shout() {}
+}
+class Dog extends Animal {
+    void shout() { System.out.println("汪汪"); }
+}
+
+class Cat extends Animal {
+    void shout() { System.out.println("喵喵"); }
+}
+// 参数是父类 Animal
+void letShout(Animal animal) {
+    animal.shout();
+}
+letShout(new Dog());  // 输出 汪汪
+letShout(new Cat());  // 输出 喵喵
+
+~~~
+
+以父类为参数，输入时输入子类参数，运行子类中重写父类的方法，但不能调用父类中没有的方法（这就是多态）
+
+怎么调用？
+
+~~~ java
+public void useTrainSport(TrainSport trainSport){
+      trainSport.move(trainSport);
+      if(trainSport instanceof Car){
+          Car a1= (Car) trainSport;
+          a1.honk();
+      } else if (trainSport instanceof Bicycle) {
+          Bicycle a2=(Bicycle) trainSport;
+          a2.ringBell();
+      }
+      else {
+          System.out.print("没有这个类型");
+      }
+    }
+~~~
+
+强制类型转换，把父类型转换成子类型再调用
 
