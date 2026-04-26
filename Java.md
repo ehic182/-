@@ -884,5 +884,81 @@ button.addActionListener(new ActionListener() {
 });//作为参数
 ~~~
 
+## (十五)Java中常见API
+
+### 1.1string
+
+1.string是Java已经定义好的一个类，使用时不需要导包
+
+2.Java里所有字符串类目标都是此类对象
+
+3.字符串不可变，他们的值在创建后不可被更改
+
+### 1.2字符串的比较，遍历
+
+1.首先要知道“==”号比较的是什么：在基本数据类型里(int,char,long)比较的是数据值，即使是char类型的也是，而引用数据类型(string，							     int []a及任意类型的数组，和接口)比较的是地址值
+
+2.那怎么比较字符串里的数值：
+
+~~~ java
+public class Q {
+    public static void main(String[] args){
+        String a="abc";
+        String b="abc";
+        boolean b1 = a.equals(b);//或boolean b1 = a.equalsIgnoreCase(b);  前一种会比较大小写而后一种则忽略大小写之间的区别
+        System.out.println(b1);
+    }
+}
+
+~~~
+
+3.遍历
+
+public char charAt(int index);根据索引返回字符
+
+public int length ();返回字符串长度
+
+数组长度：数组名.length
+
+字符串长度：字符串对象.length()
+
+~~~ java
+public class Q {
+    public static void main(String[] args){
+        String a="abc";
+        String b="abc";
+        char c = a.charAt(1);
+        System.out.println(c);
+        int length = a.length();
+        System.out.println(length);
+        for (int i = 0; i < a.length(); i++) {
+            char c1 = a.charAt(i);
+            System.out.println(c1);
+        }
+    }
+}
+~~~
+
+### 1.3字符串的截取，替换
+
+public String substring(int beginIndex,int endIndex); 截取指定范围，若没有后面一项参数则截取全部
+
+注意截取包头不包尾包左不包右
+
+~~~ java
+public class Q {
+    public static void main(String[] args) {
+        String a = "abc";
+        String b = "abc";
+        String substring = a.substring(1, 2);//截取是从0开始数起，到2截至但不包含2
+        System.out.println(substring);
+    }
+}
+~~~
+
+
+
+
+
 
 
