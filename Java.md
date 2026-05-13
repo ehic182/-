@@ -101,7 +101,7 @@ public class dog{
     
     public void setage(int age){
         if(num>0&&num<15){
-        this age=age;//this关键字会调用成员变量，不会调用局部同名变量
+        this age=age;//this关键字会调用成员变量，不会调用局部同名变量，本质上还是为了区分
             //后面的age遵循就近原则先找到最近的变量age
         }
         else{System.out.println"输入数不在合理范围内"}
@@ -737,7 +737,9 @@ public void useTrainSport(TrainSport trainSport){
 
 ## (十三)接口
 
-**接口**：接口就是一种规则，且独立于继承体系之外
+**接口**：接口就是一种规则，且独立于继承体系之外，他就是来定义规则的
+
+**那他什么时候用：当一个类里的所有方法都是抽象方法时就可以改写成接口**
 
 ​	    格式：public interface 接口名{	}
 
@@ -865,7 +867,7 @@ class MyClass implements A, B, C {
 
 ​			};
 
-3.作用：在继承一个类或实现一个接口时少写一个类
+3.作用：在继承一个类或实现一个接口时少写一个类，**因为每个类几乎只会被使用一次，所以为了方便会使用匿名内部类**
 
 如何调用
 
@@ -956,9 +958,26 @@ public class Q {
 }
 ~~~
 
+## (十六)项目
 
+### 1.1 菜单制作
 
+![Screenshot_20260508_160106](D:\qq\存储/Screenshot_20260508_160106.jpg)
 
+JMenuBar 创建菜单栏
 
+JMenu 创建菜单
 
+JMenuItem 创建菜单项
 
+注意：三者之间要相互连接
+
+### 1.2 new的用法
+
+new后面跟类名或接口和父类
+
+对象=new+类名  实现实例化
+
+new+接口  直接创建匿名内部类实现实例化
+
+new+父类   临时造一个子类
