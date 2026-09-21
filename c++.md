@@ -255,13 +255,24 @@ int main() {
 
 ## 三二.数组
 
+1.在栈上和在堆上创建的数组是不一样的
 
+![QQ20260921-193225](E:\照片\QQ20260921-193225.png)
 
+2.std::array创建数组：它有边界查询，大小明确
 
+~~~ c++
+#include<iostream>
+#include<string>
+#include<array>
+int main() {
+	std::array<int, 20>another;
+	for (int i = 0; i < another.size(); i++) {//当
+		another[i] = i;
+		std::cout << another[i] << std::endl;
+	}
+}
+~~~
 
-
-
-
-
-
+## 三三.字符串
 
