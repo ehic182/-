@@ -76,7 +76,7 @@ Enitity e;//声明实例
 class PrivateExample {
 private:
 	PrivateExample() {};//实例私有化，禁止外部创建实例
-public:
+public:                  //&取返回值地址，防止返回值是拷贝值
 	static PrivateExample& Get() {//get()是函数名，外界只有通过这个函数访问唯一一个实例
 		static PrivateExample message;
 		return message;
@@ -89,7 +89,7 @@ public:
 };
 
 int main() {
-	PrivateExample::Get().test();
+	PrivateExample::Get().test();//拿到实例调用函数
 }
 ~~~
 
@@ -255,7 +255,7 @@ int main() {
 
 ## 三二.数组
 
-1.在栈上和在堆上创建的数组是不一样的
+1.在栈上和在堆上创建的数组是不一样的，更推荐在栈上，访问速度更快(new出来是在堆上，直接创建是在栈上，堆上你拿到的是地址你还要访问地址才能知道数组值，栈上你输个下标直接就能知道值) 
 
 ![QQ20260921-193225](E:\照片\QQ20260921-193225.png)
 
@@ -267,7 +267,7 @@ int main() {
 #include<array>
 int main() {
 	std::array<int, 20>another;
-	for (int i = 0; i < another.size(); i++) {//当
+	for (int i = 0; i < another.size(); i++) {
 		another[i] = i;
 		std::cout << another[i] << std::endl;
 	}
@@ -275,4 +275,17 @@ int main() {
 ~~~
 
 ## 三三.字符串
+
+""双引号用于字符串，''用于字符
+
+~~~ c++
+#include<iostream>
+
+int main() {
+	const char* name = "nsajd";
+	char name2[5] = { 'h', 'e', 'l', 'l','o'};
+	std::string name3 = "cherno";//+"hello"不能直接加
+	std::cout << name2<< std::endl;
+}
+~~~
 
