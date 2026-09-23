@@ -289,3 +289,21 @@ int main() {
 }
 ~~~
 
+~~~ c++
+#include<iostream>
+					//std::string string
+void PrintMessage(const std::string& string) {
+	//string += "he"; 上面和这里都改后，会降低速度，本质改变的是拷贝值拷贝费时
+	std::cout << string << std::endl;
+}
+
+int main() {
+	const char* name = "cherno";
+	std::string name2 = std::string("cherno") + "hello";
+//std::string name2 = "cherno" + "hello";这里会退化成const char*类型的指针相加
+	bool contains = name2.find("no") != std::string::npos;
+}
+~~~
+
+## 三四.字符串字面量
+
